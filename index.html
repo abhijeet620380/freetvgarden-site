@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+      /* Reserve full-screen height for the player IMMEDIATELY,
+         before any JavaScript runs. Without this, the player div
+         has no height for a brief moment while it is still
+         invisible (opacity:0), letting the page content below it
+         (the About section) fall into view and flash on screen
+         for about a second during load. */
+      #ft-tv-app{height:100vh;height:100dvh}
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzMyZDc0YiIvPjxwYXRoIGQ9Ik0xMSA4LjJMMTYgMTJMMjEgOC4yIiBzdHJva2U9IiMxYzFjMWUiIHN0cm9rZS13aWR0aD0iMi4zIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiLz48cmVjdCB4PSI1LjUiIHk9IjEyLjQiIHdpZHRoPSIyMSIgaGVpZ2h0PSIxNC41IiByeD0iMyIgc3Ryb2tlPSIjMWMxYzFlIiBzdHJva2Utd2lkdGg9IjIuMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMy4zIDE2LjRMMTkuMyAxOS43TDEzLjMgMjNaIiBmaWxsPSIjMWMxYzFlIi8+PC9zdmc+">
