@@ -1,0 +1,18 @@
+# FreeTV Garden
+
+> Browser-based directory of free live TV channel streams from around the world. No signup, no app, and no subscription required.
+
+## About
+
+FreeTV Garden lets visitors watch live television and radio channels from 200+ countries directly in a web browser, using an interactive globe interface to browse by country. The service links to and embeds publicly available broadcast streams; it does not host or store video content itself.
+
+## Key Facts
+
+- 1,000+ live TV channels across 200+ countries
+- No account, signup, or app download required
+- Works in any modern browser on desktop, mobile, and smart TV
+- Categories include news, sports, music, and entertainment
+
+## Primary Page
+
+- [FreeTV Garden](https://freetvgarden.com/): Homepage and full channel directory
