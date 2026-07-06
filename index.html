@@ -281,8 +281,8 @@
     tg.target = '_blank';
     tg.rel = 'noopener noreferrer';
     tg.setAttribute('aria-label', 'Join our Telegram channel');
-    tg.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;';
-    tg.innerHTML = '<svg viewBox="0 0 240 240" width="16" height="16"><circle cx="120" cy="120" r="120" fill="#2aabee"/><path d="M98 175c-5 0-4-2-6-6l-14-48 94-55c4-3 9 1 6 4L78 126l-3 41c0 6 3 7 7 4l20-16 42 31c5 3 9 1 10-4l19-90c2-8-3-12-8-10L42 119c-8 3-8 8-1 10l25 8 16 52z" fill="#fff"/></svg>';
+    tg.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex-shrink:0;';
+    tg.innerHTML = '<svg viewBox="0 0 240 240" width="32" height="32"><circle cx="120" cy="120" r="120" fill="#2aabee"/><path d="M98 175c-5 0-4-2-6-6l-14-48 94-55c4-3 9 1 6 4L78 126l-3 41c0 6 3 7 7 4l20-16 42 31c5 3 9 1 10-4l19-90c2-8-3-12-8-10L42 119c-8 3-8 8-1 10l25 8 16 52z" fill="#fff"/></svg>';
     tg.addEventListener('click', function (e) { e.stopPropagation(); });
     wrapper.appendChild(tg);
   }
@@ -302,7 +302,7 @@
     ];
 
     var row = document.createElement('div');
-    row.style.cssText = 'display:flex;justify-content:center;gap:14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--primary-border-color);';
+    row.className = 'ft-social-row';row.style.cssText = 'display:flex;justify-content:flex-start;align-items:center;gap:14px;margin-top:12px;padding:12px 2px 4px;border-top:1px solid var(--primary-border-color);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%;';var rowScrollbarHide=document.createElement('style');rowScrollbarHide.textContent='.ft-social-row::-webkit-scrollbar{display:none}';document.head.appendChild(rowScrollbarHide);
 
     socials.forEach(function (s) {
       var a = document.createElement('a');
