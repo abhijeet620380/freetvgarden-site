@@ -55,6 +55,14 @@
     <link rel="preload" href="https://iptv-org.github.io/api/countries.json" as="fetch" crossorigin>
     <link rel="preload" href="https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json" as="fetch" crossorigin>
     
+    <!-- Preload the two heavy libraries too (Three.js, HLS.js).
+         This does NOT change when they execute - they still run in
+         the exact same place, in the exact same order - it only
+         tells the browser to start downloading them immediately
+         instead of discovering them later at their script tag. -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js" as="script">
+    
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://freetvgarden.com/#website","name":"FreeTV Garden","url":"https://freetvgarden.com","alternateName":"FreeTV Garden — Free Live TV Online","description":"Watch 1000+ free live TV channels from 200+ countries. Stream news, sports, music and entertainment in your browser — no signup, no subscription required.","inLanguage":"en","publisher":{"@type":"Organization","name":"FreeTV Garden","url":"https://freetvgarden.com"}},{"@type":"WebPage","@id":"https://freetvgarden.com/#webpage","url":"https://freetvgarden.com/","name":"FreeTV Garden - Watch Free Live TV Channels from Around the World","description":"Watch 1000+ free live TV channels from 200+ countries. Stream news, sports, music and entertainment — no signup, no subscription required.","isPartOf":{"@id":"https://freetvgarden.com/#website"},"inLanguage":"en","breadcrumb":{"@id":"https://freetvgarden.com/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://freetvgarden.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"FreeTV Garden","item":"https://freetvgarden.com/"}]}]}</script>
 
     <meta name="description" content="Watch 1000+ free live TV channels from 200+ countries. Stream news, sports, music and entertainment free in your browser - no signup, no app, no subscription.">
