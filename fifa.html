@@ -1,0 +1,330 @@
+<style>
+    /* --- CSS Variables --- */
+    .master-breakout {
+        --primary-bg: #153354;
+        --header-bg: #0a1929;
+        --accent-green: #00b140;
+        --accent-blue: #005eb8;
+        --live-red: #e30613;
+        --ticker-bg: #0d2238;
+        --ticker-text: #ffcc00;
+        
+        position: relative;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+        background-color: var(--primary-bg);
+    }
+
+    /* DESKTOP BREAKOUT HACK (Keeps it full-bleed on large monitors) */
+    @media (min-width: 769px) {
+        .master-breakout {
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+    }
+
+    /* FIXED MOBILE VIEWPORT ENGINE (Prevents desktop zooming on phone screens) */
+    @media (max-width: 768px) {
+        .master-breakout {
+            width: 100% !important;
+            max-width: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            overflow-x: hidden !important;
+        }
+    }
+
+    .master-breakout *, .master-breakout *::before, .master-breakout *::after {
+        box-sizing: inherit;
+    }
+
+    /* --- Ad Wrapper Setup --- */
+    .ad-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;                
+        padding: 10px 0;                  
+        background-color: var(--primary-bg); 
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* --- Header Styling --- */
+    .stream-header {
+        padding: 14px 10px; 
+        background-color: var(--header-bg); 
+        text-align: center;
+        border-bottom: 2px solid var(--accent-green); 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 10;
+    }
+
+    .title-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px; 
+        width: 100%;
+    }
+
+    .rotating-ball {
+        width: 24px; 
+        height: 24px;
+        flex-shrink: 0; 
+        animation: spinBall 4s linear infinite;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    @keyframes spinBall {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .header-text {
+        margin: 0;
+        font-size: 15px; 
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        color: #ffffff;
+    }
+
+    .brand-title {
+        margin-right: 6px;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, var(--accent-green) 0%, #ffffff 50%, var(--accent-blue) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .live-text {
+        background-color: var(--live-red);
+        color: #ffffff;
+        margin-left: 8px;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 900;
+        box-shadow: 0 0 8px rgba(227, 6, 19, 0.5);
+        animation: pulseLive 2s infinite;
+    }
+
+    @keyframes pulseLive {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(0.95); }
+    }
+
+    /* --- Running Ticker Announcement --- */
+    .ticker-wrapper {
+        position: relative;
+        background-color: var(--ticker-bg);
+        border-bottom: 2px solid var(--accent-blue);
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .running-message-container {
+        flex-grow: 1;
+        color: var(--ticker-text);
+        padding: 8px 45px 8px 10px; 
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .running-text {
+        display: inline-block;
+        padding-left: 100%; 
+        animation: scrollTicker 16s linear 2 forwards; 
+    }
+
+    @keyframes scrollTicker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+    .highlight-text {
+        background-color: var(--live-red);
+        color: #ffffff;
+        padding: 2px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .close-ticker-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--live-red);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+    }
+
+    /* --- Smart Iframe Streaming Box --- */
+    .breakout-container {
+        position: relative;
+        width: 100%;
+        background-color: #000;
+        overflow: hidden !important; /* Strips out secondary outer container scrollbars */
+    }
+
+    .breakout-iframe {
+        border: none;
+        display: block;
+        width: 100%;              
+        height: 100%; 
+    }
+
+    /* DESKTOP PLAYER HEIGHT */
+    @media (min-width: 769px) {
+        .header-text { font-size: 22px; letter-spacing: 1px; }
+        .rotating-ball { width: 30px; height: 30px; }
+        .running-message-container { font-size: 15px; padding: 10px 50px 10px 15px; }
+        .close-ticker-btn { width: 26px; height: 26px; right: 12px; }
+        .breakout-container { height: 78vh; min-height: 620px; }
+    }
+
+    /* SMART MOBILE DISPLAY CONSTRAINTS */
+    @media (max-width: 768px) {
+        .breakout-container {
+            height: auto; 
+            min-height: 480px; 
+            aspect-ratio: 16 / 9; /* Perfect mobile theater shape */
+        }
+        
+        /* FALLBACK CROPPING ENGINE: If the source layout still tries to force sidebars, 
+           this shifts them out of view and focuses directly on the central live match grids */
+        .breakout-iframe {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+</style>
+
+<div class="master-breakout">
+    
+    <!-- Top Ad Block -->
+    <div class="ad-wrapper">
+        <script>
+            atOptions = {
+                'key' : '6a8a6368a273ce2169a55a7b2a40d4a2',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script src="https://mittengulped.com/6a8a6368a273ce2169a55a7b2a40d4a2/invoke.js"></script>
+    </div>
+
+    <!-- Clean Generic Dynamic Header -->
+    <div class="stream-header">
+        <div class="title-wrapper">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball.svg" alt="Football" class="rotating-ball" />
+            <h2 class="header-text">
+                <span class="brand-title">FREETVGARDEN SPORTS</span>
+                <span class="gradient-text">LIVE MATCH STREAMS</span>
+                <span class="live-text">LIVE</span>
+            </h2>
+        </div>
+    </div>
+
+    <!-- Announcement Ticker -->
+    <div class="ticker-wrapper" id="notice-ticker">
+        <div class="running-message-container">
+            <span class="running-text">
+                ⚠️ NOTE: First 1 or 2 clicks may open sponsor ads. Simply close them and return to watch. For full screen, <span class="highlight-text">double tap</span> on the player.
+            </span>
+        </div>
+        <button class="close-ticker-btn" onclick="document.getElementById('notice-ticker').style.display='none'" aria-label="Close message">&times;</button>
+    </div>
+
+    <!-- Video Frame Area -->
+    <div class="breakout-container" id="safe-stream-box">
+        <iframe class="breakout-iframe" 
+                id="fifa-player"
+                title="Live Sports Match Streams"
+                scrolling="yes"           
+                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                allowfullscreen="true"
+                loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- Bottom Ad Block -->
+    <div class="ad-wrapper">
+        <script>
+            atOptions = {
+                'key' : 'f9eeeab3829a4be1e3b5e2ce1d161795',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script src="https://mittengulped.com/f9eeeab3829a4be1e3b5e2ce1d161795/invoke.js"></script>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        // Safe check for Odoo website builder editing interfaces
+        var isOdooEditor = window.location.search.indexOf('enable_editor') > -1 || 
+                           document.body.classList.contains('o_editable') || 
+                           document.body.classList.contains('editor_enable') ||
+                           (window.self !== window.top && document.querySelector('.o_iframe'));
+        
+        if (!isOdooEditor) {
+            var player = document.getElementById('fifa-player');
+            if (player) {
+                player.src = "https://footystream.pk/events/";
+            }
+
+            // Closes announcement layer after exactly two presentation loops (32 seconds)
+            setTimeout(function() {
+                var ticker = document.getElementById('notice-ticker');
+                if (ticker) {
+                    ticker.style.display = 'none';
+                }
+            }, 32000); 
+
+        } else {
+            var container = document.getElementById('safe-stream-box');
+            if (container) {
+                container.innerHTML = '<div style="color:#00b140; text-align:center; padding:50px 20px; font-family:sans-serif; background:#0a1929;"><h3>⚽ Widget Layout Is Suspended</h3><p style="font-size:14px; color:#ffffff; opacity:0.8;">The stream frame is safely locked out during active editor updates to secure stability.</p></div>';
+            }
+        }
+    })();
+</script>
