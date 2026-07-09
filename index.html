@@ -354,4 +354,21 @@
 
 
 
-<style>@keyframes bL{0%{transform:scale(0) rotate(0deg);opacity:0}4%{transform:scale(1.1) rotate(180deg);opacity:1}8%,28%{transform:scale(1) rotate(360deg);opacity:1}32%,100%{transform:scale(0) rotate(720deg);opacity:0}}@keyframes tX{0%,32%,65%,100%{transform:scale(0);opacity:0}37%{transform:scale(1.1);opacity:1}41%,61%{transform:scale(1);opacity:1}}@keyframes sG{0%,65%,100%{transform:scale(0);opacity:0}70%{transform:scale(1.1);opacity:1}74%,94%{transform:scale(1);opacity:1}98%{transform:scale(0);opacity:0}}</style><a href="https://freetvgarden.com/sports" target="_blank" title="Watch Live" style="position:fixed;bottom:95px;left:20px;width:45px;height:45px;background:#fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;z-index:9999;border:2px solid #000;text-decoration:none;overflow:hidden;"><span style="position:absolute;font-size:24px;animation:bL 6s infinite">⚽</span><span style="position:absolute;font-size:11px;font-family:'Arial Black',Impact,sans-serif;font-weight:900;letter-spacing:0.5px;color:#000;animation:tX 6s infinite">WATCH</span><svg viewBox="0 0 1000 328" xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:32px;animation:sG 6s infinite"><path d="m283 0h104v327h-104m-283-327h253l-26 72h-123v66h99l-26 72h-73v118h-104m456-328h253l-26 72h-123v66h99l-26 72h-73v118h-104m319-328-119 328h101l13-43h116l13 43h101l-119-328m-53 87 39 133h-78" fill="#326295"/></svg></a>
+<style>
+  @keyframes bL{0%{transform:scale(0) rotate(0deg);opacity:0}4%{transform:scale(1.1) rotate(180deg);opacity:1}8%,28%{transform:scale(1) rotate(360deg);opacity:1}32%,100%{transform:scale(0) rotate(720deg);opacity:0}}
+  @keyframes tX{0%,32%,65%,100%{transform:scale(0);opacity:0}37%{transform:scale(1.1);opacity:1}41%,61%{transform:scale(1);opacity:1}}
+  @keyframes sG{0%,65%,100%{transform:scale(0);opacity:0}70%{transform:scale(1.1);opacity:1}74%,94%{transform:scale(1);opacity:1}98%{transform:scale(0);opacity:0}}
+</style>
+
+<!-- CHANGED to a DIV with an onclick event to hide the URL from basic scrapers -->
+<div onclick="window.open('/' + 'sp' + 'orts', '_blank')" title="Watch Live" style="position:fixed;bottom:95px;left:20px;width:45px;height:45px;background:#fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;z-index:9999;border:2px solid #000;cursor:pointer;overflow:hidden;">
+  
+  <span style="position:absolute;font-size:24px;animation:bL 6s infinite">⚽</span>
+  
+  <span style="position:absolute;font-size:11px;font-family:'Arial Black',Impact,sans-serif;font-weight:900;letter-spacing:0.5px;color:#000;animation:tX 6s infinite">WATCH</span>
+  
+  <svg viewBox="0 0 1000 328" xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:32px;animation:sG 6s infinite">
+    <path d="m283 0h104v327h-104m-283-327h253l-26 72h-123v66h99l-26 72h-73v118h-104m456-328h253l-26 72h-123v66h99l-26 72h-73v118h-104m319-328-119 328h101l13-43h116l13 43h101l-119-328m-53 87 39 133h-78" fill="#326295"/>
+  </svg>
+
+</div>
