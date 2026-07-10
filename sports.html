@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- ======================================================== -->
+    <!-- ⚙️ UPDATE YOUR STREAM LINK AND TITLE HERE ⚙️ -->
+    <!-- Use your Base64 Encoder tool to generate these strings   -->
+    <!-- ======================================================== -->
+    <script>
+        const STREAM_CONFIG = {
+            // Replace the string below with your new Base64 Title
+            title: "RklGQSBXT1JMRCBDVVAgMjAyNg==", 
+            
+            // Replace the string below with your new Base64 Stream URL
+            url: "aHR0cHM6Ly9mb290eXN0cmVhbS5way9hbHBoYS9zcGFpbi12cy1iZWxnaXVtLzYxNw=="
+        };
+    </script>
+    <!-- ======================================================== -->
+
+
     <!-- Bot Control -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     
@@ -136,26 +152,22 @@
       <span>TV Garden</span>
     </a>
 
-    <!-- Obfuscation Script -->
+    <!-- Obfuscation Logic Script -->
     <script>
         (function() {
-            // Base64 Encoded Strings so bots cannot read the raw text
-            const encodedTitle = "RklGQSBXT1JMRCBDVVAgMjAyNg=="; 
-            const encodedURL = "aHR0cHM6Ly9mb290eXN0cmVhbS5way9ldmVudHMv";
-
-            // Decode and inject on page load
+            // Decode and inject on page load using the config block at the top
             window.onload = function() {
                 // 1. Inject the title
                 const titleTarget = document.getElementById('dynamic-title-target');
-                if (titleTarget) {
-                    titleTarget.innerText = atob(encodedTitle);
+                if (titleTarget && typeof STREAM_CONFIG !== 'undefined') {
+                    titleTarget.innerText = atob(STREAM_CONFIG.title);
                     document.getElementById('live-indicator').style.display = 'inline-block';
                 }
 
                 // 2. Inject the stream URL
                 const player = document.getElementById('dynamic-player');
-                if (player) {
-                    player.src = atob(encodedURL);
+                if (player && typeof STREAM_CONFIG !== 'undefined') {
+                    player.src = atob(STREAM_CONFIG.url);
                 }
             };
 
