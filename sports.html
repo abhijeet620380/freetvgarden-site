@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- THIS LINE BLOCKS GOOGLE AND SEARCH BOTS FOR SEO PROTECTION -->
-    <meta name="robots" content="noindex, nofollow">
+    <!-- Bot Control -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     
-    <title>FIFA World Cup Live Streams | FreeTV Garden</title>
+    <!-- Generic Title to fool scrapers -->
+    <title>Live Event Stream | FreeTV Garden</title>
 
-    <!-- Privacy-friendly analytics by Plausible -->
+    <!-- Privacy-friendly analytics -->
     <script async src="https://plausible.io/js/pa-ZgsDl3jB9z6GA1rlolG45.js"></script>
     <script>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
@@ -17,270 +18,37 @@
     </script>
 
     <style>
-        /* --- Global Reset for GitHub Deployment --- */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            background-color: #153354;
-        }
-
-        /* --- CSS Variables --- */
-        .master-breakout {
-            --primary-bg: #153354;
-            --header-bg: #0a1929;
-            --accent-green: #00b140;
-            --accent-blue: #005eb8;
-            --live-red: #e30613;
-            --ticker-bg: #0d2238;
-            --ticker-text: #ffcc00; 
-            
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            background-color: var(--primary-bg);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            box-sizing: border-box;
-        }
-
-        .master-breakout *, .master-breakout *::before, .master-breakout *::after {
-            box-sizing: inherit;
-        }
-
-        /* --- Ad Wrapper --- */
-        .ad-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 0;                
-            padding: 10px 0;                  
-            background-color: var(--primary-bg); 
-            gap: 15px;
-        }
-
-        /* --- Rich Header Styling --- */
-        .stream-header {
-            padding: 12px 10px; 
-            background-color: var(--header-bg); 
-            text-align: center;
-            border-bottom: 2px solid var(--accent-green); 
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 10;
-        }
-
-        .title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px; 
-            width: 100%;
-        }
-
-        .rotating-ball {
-            width: 22px; 
-            height: 22px;
-            flex-shrink: 0; 
-            animation: spinBall 4s linear infinite;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-
-        .fifa-icon {
-            height: 32px; 
-            width: auto;
-            flex-shrink: 0; 
-            background-color: transparent; 
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); 
-        }
-
-        @keyframes spinBall {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .header-text {
-            margin: 0;
-            font-size: 14px; 
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.5px; 
-            display: flex;
-            align-items: center;
-            white-space: nowrap; 
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-green) 0%, #ffffff 50%, var(--accent-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .live-text {
-            color: var(--live-red);
-            margin-left: 6px;
-            font-size: 0.85em;
-            text-shadow: 0 0 8px rgba(227, 6, 19, 0.4);
-            animation: pulseLive 2s infinite;
-        }
-
-        @keyframes pulseLive {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        /* --- Running Ticker Message --- */
-        .ticker-wrapper {
-            position: relative;
-            background-color: var(--ticker-bg);
-            border-bottom: 2px solid var(--accent-blue);
-            display: flex;
-            align-items: center;
-        }
-
-        .running-message-container {
-            flex-grow: 1;
-            color: var(--ticker-text);
-            padding: 6px 40px 6px 0; 
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .running-text {
-            display: inline-block;
-            padding-left: 100%; 
-            animation: scrollTicker 15s linear 2 forwards; 
-        }
-
-        @keyframes scrollTicker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .highlight-text {
-            background-color: var(--live-red);
-            color: #ffffff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-weight: 900;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
-
-        .close-ticker-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--live-red);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 1;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 20;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .close-ticker-btn:hover {
-            background-color: #ff3333;
-        }
-
-        /* --- Desktop Iframe Container --- */
-        .breakout-container {
-            position: relative;
-            width: 100%;
-            height: 75vh; 
-            min-height: 600px; 
-            background-color: #000;
-            overflow-y: auto; 
-            -webkit-overflow-scrolling: touch; 
-        }
-
-        .breakout-iframe {
-            border: none;
-            display: block;
-            width: 100%;              
-            height: 100%; 
-        }
-
-        /* --- Responsive Sizing --- */
-        @media (min-width: 400px) {
-            .title-wrapper { gap: 10px; }
-            .header-text { font-size: 18px; letter-spacing: 1px; }
-            .rotating-ball { width: 26px; height: 26px; }
-            .fifa-icon { height: 40px; }
-        }
-
-        @media (min-width: 768px) {
-            .title-wrapper { gap: 15px; }
-            .header-text { font-size: 28px; letter-spacing: 1.2px; }
-            .rotating-ball { width: 32px; height: 32px; }
-            .fifa-icon { height: 48px; }
-            .running-message-container { font-size: 16px; padding: 8px 50px 8px 0; }
-            .close-ticker-btn { width: 26px; height: 26px; font-size: 18px; right: 15px; }
-        }
-
-        @media (max-width: 768px) {
-            .breakout-container {
-                height: 65vh;         
-                min-height: 520px;    
-            }
-        }
-
-        /* --- Floating Buttons Styling --- */
-        .floating-telegram-btn, .floating-tv-btn {
-            position: fixed;
-            bottom: 20px;
-            color: white;
-            padding: 8px 14px; 
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 6px; 
-            text-decoration: none !important;
-            font-family: Arial, sans-serif;
-            font-size: 13px; 
-            font-weight: bold;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15); 
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            z-index: 9999;
-        }
-
-        /* Telegram Button - Bottom Right */
-        .floating-telegram-btn {
-            right: 20px;
-            background-color: #0088cc; 
-        }
-        .floating-telegram-btn:hover {
-            transform: translateY(-2px); 
-            background-color: #0077b5;
-            color: white;
-        }
-
-        /* TV Garden Button - Bottom Left */
-        .floating-tv-btn {
-            left: 20px;
-            background-color: #00b140; 
-        }
-        .floating-tv-btn:hover {
-            transform: translateY(-2px); 
-            background-color: #008a32;
-            color: white;
-        }
+        /* (Keep all of your existing CSS styles exactly as they were here) */
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; background-color: #153354; }
+        .master-breakout { --primary-bg: #153354; --header-bg: #0a1929; --accent-green: #00b140; --accent-blue: #005eb8; --live-red: #e30613; --ticker-bg: #0d2238; --ticker-text: #ffcc00; position: relative; width: 100%; max-width: 100%; background-color: var(--primary-bg); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; box-sizing: border-box; }
+        .master-breakout *, .master-breakout *::before, .master-breakout *::after { box-sizing: inherit; }
+        .ad-wrapper { display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 0; padding: 10px 0; background-color: var(--primary-bg); gap: 15px; }
+        .stream-header { padding: 12px 10px; background-color: var(--header-bg); text-align: center; border-bottom: 2px solid var(--accent-green); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); position: relative; z-index: 10; }
+        .title-wrapper { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
+        .rotating-ball { width: 22px; height: 22px; flex-shrink: 0; animation: spinBall 4s linear infinite; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+        .fifa-icon { height: 32px; width: auto; flex-shrink: 0; background-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        @keyframes spinBall { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .header-text { margin: 0; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; white-space: nowrap; }
+        .gradient-text { background: linear-gradient(135deg, var(--accent-green) 0%, #ffffff 50%, var(--accent-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
+        .live-text { color: var(--live-red); margin-left: 6px; font-size: 0.85em; text-shadow: 0 0 8px rgba(227, 6, 19, 0.4); animation: pulseLive 2s infinite; }
+        @keyframes pulseLive { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .ticker-wrapper { position: relative; background-color: var(--ticker-bg); border-bottom: 2px solid var(--accent-blue); display: flex; align-items: center; }
+        .running-message-container { flex-grow: 1; color: var(--ticker-text); padding: 6px 40px 6px 0; overflow: hidden; white-space: nowrap; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
+        .running-text { display: inline-block; padding-left: 100%; animation: scrollTicker 15s linear 2 forwards; }
+        @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .highlight-text { background-color: var(--live-red); color: #ffffff; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; font-weight: 900; box-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+        .close-ticker-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: var(--live-red); color: white; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 16px; font-weight: bold; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 20; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .close-ticker-btn:hover { background-color: #ff3333; }
+        .breakout-container { position: relative; width: 100%; height: 75vh; min-height: 600px; background-color: #000; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .breakout-iframe { border: none; display: block; width: 100%; height: 100%; }
+        @media (min-width: 400px) { .title-wrapper { gap: 10px; } .header-text { font-size: 18px; letter-spacing: 1px; } .rotating-ball { width: 26px; height: 26px; } .fifa-icon { height: 40px; } }
+        @media (min-width: 768px) { .title-wrapper { gap: 15px; } .header-text { font-size: 28px; letter-spacing: 1.2px; } .rotating-ball { width: 32px; height: 32px; } .fifa-icon { height: 48px; } .running-message-container { font-size: 16px; padding: 8px 50px 8px 0; } .close-ticker-btn { width: 26px; height: 26px; font-size: 18px; right: 15px; } }
+        @media (max-width: 768px) { .breakout-container { height: 65vh; min-height: 520px; } }
+        .floating-telegram-btn, .floating-tv-btn { position: fixed; bottom: 20px; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 6px; text-decoration: none !important; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; box-shadow: 0 3px 6px rgba(0,0,0,0.15); transition: transform 0.3s ease, background-color 0.3s ease; z-index: 9999; }
+        .floating-telegram-btn { right: 20px; background-color: #0088cc; }
+        .floating-telegram-btn:hover { transform: translateY(-2px); background-color: #0077b5; color: white; }
+        .floating-tv-btn { left: 20px; background-color: #00b140; }
+        .floating-tv-btn:hover { transform: translateY(-2px); background-color: #008a32; color: white; }
     </style>
 </head>
 <body>
@@ -303,14 +71,16 @@
 
         <div class="stream-header">
             <div class="title-wrapper">
-                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball.svg" alt="Football" class="rotating-ball" />
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball.svg" alt="Sports Ball" class="rotating-ball" />
                 
                 <h2 class="header-text">
-                    <span class="gradient-text">FIFA WORLD CUP 2026</span>
-                    <span class="live-text">LIVE</span>
+                    <!-- Blank span where JS will inject the real title -->
+                    <span class="gradient-text" id="dynamic-title-target">Loading Event...</span>
+                    <span class="live-text" style="display:none;" id="live-indicator">LIVE</span>
                 </h2>
 
-                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem_(dark_mode).svg" alt="FIFA 2026 Emblem" class="fifa-icon" />
+                <!-- Changed the alt tag so it doesn't say "FIFA" -->
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem_(dark_mode).svg" alt="Event Emblem" class="fifa-icon" />
             </div>
         </div>
 
@@ -325,9 +95,10 @@
 
         <!-- Live Stream Player -->
         <div class="breakout-container" id="safe-stream-box">
+            <!-- Source removed from raw HTML -->
             <iframe class="breakout-iframe" 
-                    id="fifa-player"
-                    title="FIFA World Cup Live Match Streams"
+                    id="dynamic-player"
+                    title="Live Event Stream"
                     scrolling="yes"           
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                     allowfullscreen="true"
@@ -335,40 +106,28 @@
             </iframe>
         </div>
 
-        <!-- Bottom Ads Wrapper (Banner + Native) -->
+        <!-- Bottom Ads Wrapper -->
         <div class="ad-wrapper">
-            
-            <!-- Standard Banner -->
             <div>
                 <script>
-                    atOptions = {
-                        'key' : 'f9eeeab3829a4be1e3b5e2ce1d161795',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
+                    atOptions = { 'key' : 'f9eeeab3829a4be1e3b5e2ce1d161795', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
                 </script>
                 <script src="https://mittengulped.com/f9eeeab3829a4be1e3b5e2ce1d161795/invoke.js"></script>
             </div>
-
-            <!-- Native Banner -->
             <div style="width: 100%; max-width: 800px; display: flex; justify-content: center;">
                 <script async="async" data-cfasync="false" src="https://mittengulped.com/a28b3599b3cf019abfe294ea508a6ab0/invoke.js"></script>
                 <div id="container-a28b3599b3cf019abfe294ea508a6ab0"></div>
             </div>
-
         </div>
 
-    </div> <!-- End of Master Breakout -->
+    </div>
 
-    <!-- Floating Telegram Button (Bottom Right) -->
+    <!-- Floating Buttons -->
     <a href="https://t.me/Freetools_channel" target="_blank" class="floating-telegram-btn">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" width="18" height="18">
       <span>Join Now</span>
     </a>
 
-    <!-- Floating TV Garden Button (Bottom Left) -->
     <a href="https://freetvgarden.com" class="floating-tv-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
@@ -377,14 +136,30 @@
       <span>TV Garden</span>
     </a>
 
+    <!-- Obfuscation Script -->
     <script>
         (function() {
-            var player = document.getElementById('fifa-player');
-            if (player) {
-                player.src = "https://footystream.pk/";
-            }
+            // Base64 Encoded Strings so bots cannot read the raw text
+            const encodedTitle = "RklGQSBXT1JMRCBDVVAgMjAyNg=="; 
+            const encodedURL = "aHR0cHM6Ly9mb290eXN0cmVhbS5way9ldmVudHMv";
 
-            // Auto-remove the ticker completely after 30 seconds
+            // Decode and inject on page load
+            window.onload = function() {
+                // 1. Inject the title
+                const titleTarget = document.getElementById('dynamic-title-target');
+                if (titleTarget) {
+                    titleTarget.innerText = atob(encodedTitle);
+                    document.getElementById('live-indicator').style.display = 'inline-block';
+                }
+
+                // 2. Inject the stream URL
+                const player = document.getElementById('dynamic-player');
+                if (player) {
+                    player.src = atob(encodedURL);
+                }
+            };
+
+            // Auto-remove the ticker
             setTimeout(function() {
                 var ticker = document.getElementById('notice-ticker');
                 if (ticker) {
@@ -394,7 +169,7 @@
         })();
     </script>
 
-    <!-- Popunder Script (Placed safely at the end of the body) -->
+    <!-- Popunder Script -->
     <script src="https://mittengulped.com/a8/d2/48/a8d2481f4652911bffedb73bb263686f.js"></script>
 
 </body>
